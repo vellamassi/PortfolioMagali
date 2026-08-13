@@ -1,8 +1,20 @@
+import { useEffect, useState } from 'react'
+import directus, { readItems, type Project as ProjectItem } from '../lib/directus'
+import Project from '../components/Project'
+
 export default function Projects() {
+  const [projects, setProjects] = useState<ProjectItem[]>([])
+
+  useEffect(() => {
+    directus.request(readItems('projects')).then(setProjects)
+  }, [])
+
   return (
     <div className="page page--projects">
       <h1>Projects</h1>
-      <p>Placeholder — this will list items from the Directus "projects" collection.</p>
+      {projects.map((project) => (
+        <Project key={project.id} project={project} />
+      ))}
     </div>
   )
 }
