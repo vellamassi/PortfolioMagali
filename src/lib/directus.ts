@@ -8,6 +8,7 @@ export type Project = {
   description: string;
   image: string | null;
   date: string;
+  spotify_url: string;
 };
 
 type Schema = {

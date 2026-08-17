@@ -1,6 +1,7 @@
 import Markdown from 'react-markdown'
 import type { Project as ProjectItem } from '../lib/directus'
 import Button from './Button'
+import SpotifyEmbed from './Spotify'
 
 type ProjectProps = {
   project: ProjectItem
@@ -17,13 +18,19 @@ export default function Project({ project }: ProjectProps) {
                   <Markdown>{project.description}</Markdown>
               </div>
 
-              <Button href={project.url}>{project.button_text}</Button>
+              {project.button_text && project.url && (
+                  <Button href={project.url}>{project.button_text}</Button>
+              )}
           </div>
 
           {project.image && (
               <div className="project__image">
                   <img src={project.image} alt={project.title} />
               </div>
+          )}
+
+          {project.spotify_url && (
+              <SpotifyEmbed url={project.spotify_url} />
           )}
       </div>
   )
