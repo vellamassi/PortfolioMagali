@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import directus, { readItems, type Project as ProjectItem } from '../lib/directus'
 import { categories } from '../lib/categories'
-import { slugify } from '../lib/slug'
+import SubnavTile from '../components/SubnavTile'
 
 export default function ProjectCategory() {
     const { type } = useParams<{ type: string }>()
@@ -21,16 +21,7 @@ export default function ProjectCategory() {
             <ul className="subnav__tiles">
                 {filtered.map((project) => (
                   <li key={project.id} className="subnav__tile-slot">
-                    <NavLink
-                      to={`/${type}/${slugify(project.title)}`}
-                      className={({ isActive }) =>
-                        ['subnav__tile', isActive ? 'subnav__tile--active' : '']
-                          .filter(Boolean)
-                          .join(' ')
-                      }
-                    >
-                      {project.title}
-                    </NavLink>
+                    <SubnavTile project={project} type={type ?? ''} />
                   </li>
                 ))}
             </ul>

@@ -6,8 +6,7 @@ export type Project = {
   button_text: string;
   url: string;
   description: string;
-  image: string | null;
-  date: string;
+  image: string;
   spotify_url: string;
   type: string[];
 };
@@ -17,6 +16,10 @@ type Schema = {
 };
 
 const directus = createDirectus<Schema>(import.meta.env.VITE_DIRECTUS_URL as string).with(rest());
+
+export function assetUrl(fileId: string): string {
+  return `${import.meta.env.VITE_DIRECTUS_URL}/assets/${fileId}`
+}
 
 export default directus;
 export { readItems };
