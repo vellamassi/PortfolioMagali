@@ -9,12 +9,14 @@ export default function App() {
   return (
     <>
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/:type" element={<ProjectCategory />} />
-          <Route path="/:type/:slug" element={<ProjectDetail />} />
-        </Routes>
+          <div className="grid">
+              <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/:type" element={<ProjectCategory />} />
+                  <Route path="/:type/:slug" element={<ProjectDetail />} />
+              </Routes>
+          </div>
       </main>
 
       <footer className="footer">
