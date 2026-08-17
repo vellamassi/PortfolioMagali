@@ -1,6 +1,6 @@
 import { createDirectus, rest, readItems } from '@directus/sdk';
 
-export type Project = {
+type ProjectFields = {
   id: number;
   title: string;
   button_text: string;
@@ -9,6 +9,10 @@ export type Project = {
   image: string;
   spotify_url: string;
   type: string[];
+};
+
+export type Project = ProjectFields & {
+  related_projects?: { related_projects_id: ProjectFields }[];
 };
 
 type Schema = {
