@@ -1,31 +1,47 @@
 import { NavLink } from 'react-router-dom'
-
-const links = [
-  { to: '/', label: 'Home', end: true },
-  { to: '/projects', label: 'Projects', end: false },
-  { to: '/contact', label: 'Contact', end: false },
-]
+import { categories } from '../lib/categories'
 
 export default function Navigation() {
-  return (
-    <nav className="dvd-nav">
-      <ul className="dvd-nav__buttons">
-        {links.map(({ to, label, end }) => (
-          <li key={to} className="dvd-nav__button-slot">
-            <NavLink
-              to={to}
-              end={end}
-              className={({ isActive }) =>
-                ['dvd-nav__button', isActive ? 'dvd-nav__button--active' : '']
-                  .filter(Boolean)
-                  .join(' ')
-              }
-            >
-              {label}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    return (
+        <nav className="nav">
+            <ul className="nav__buttons">
+                <li className="nav__button-slot">
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                        ['nav__button', isActive ? 'nav__button--active' : '']
+                            .filter(Boolean)
+                            .join(' ')}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M6 19h3v-5q0-.425.288-.712T10 13h4q.425 0 .713.288T15 14v5h3v-9l-6-4.5L6 10zm-2 0v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-4q-.425 0-.712-.288T13 20v-5h-2v5q0 .425-.288.713T10 21H6q-.825 0-1.412-.587T4 19m8-6.75"/>
+                        </svg>
+                    </NavLink>
+                </li>
+
+                {categories.map(({ type, label }) => (
+                    <li key={type} className="nav__button-slot">
+                        <NavLink
+                        to={`/${type}`}
+                        className={({ isActive }) =>
+                            ['nav__button', isActive ? 'nav__button--active' : '']
+                            .filter(Boolean)
+                            .join(' ')}>
+                            {label}
+                        </NavLink>
+                    </li>
+                ))}
+
+                <li className="nav__button-slot">
+                    <NavLink
+                        to="/contact"
+                        className={({ isActive }) =>
+                        ['nav__button', isActive ? 'nav__button--active' : '']
+                            .filter(Boolean)
+                            .join(' ')}>
+                        About
+                    </NavLink>
+                </li>
+              </ul>
+        </nav>
   )
 }

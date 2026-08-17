@@ -1,7 +1,7 @@
 import { createDirectus, rest, readItems } from '@directus/sdk';
 
 export type Project = {
-  id: string;
+  id: number;
   title: string;
   button_text: string;
   url: string;
@@ -9,6 +9,7 @@ export type Project = {
   image: string | null;
   date: string;
   spotify_url: string;
+  type: string[];
 };
 
 type Schema = {
