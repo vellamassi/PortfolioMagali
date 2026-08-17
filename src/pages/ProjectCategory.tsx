@@ -16,7 +16,7 @@ export default function ProjectCategory() {
     const filtered = type ? projects.filter((project) => project.type.includes(type)) : []
 
     return (
-        <div className="page page--project-category">
+        <section className="page page--project-category">
             <h1>{label}</h1>
             <ul className="subnav__tiles">
                 {filtered.map((project) => (
@@ -34,6 +34,6 @@ export default function ProjectCategory() {
                   </li>
                 ))}
             </ul>
-        </div>
+        </section>
     )
 }

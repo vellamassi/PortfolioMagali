@@ -21,8 +21,8 @@ export default function ProjectDetail() {
   }
 
   return (
-    <div className="page page--project-detail">
+    <section className="page page--project-detail">
       <Project project={project} />
-    </div>
+    </section>
   )
 }

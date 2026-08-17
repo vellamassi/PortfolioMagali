@@ -10,11 +10,11 @@ export default function Projects() {
   }, [])
 
   return (
-    <div className="page page--projects">
+    <section className="page page--projects">
       <h1>Projects</h1>
       {projects.map((project) => (
         <Project key={project.id} project={project} />
       ))}
-    </div>
+    </section>
   )
 }
