@@ -1,7 +1,6 @@
 import Markdown from 'react-markdown'
 import { assetUrl, type Project as ProjectItem } from '../lib/directus'
 import Button from './Button'
-import SpotifyEmbed from './Spotify'
 import SubnavTile from "./SubnavTile.tsx";
 import ContentBlocks from './ContentBlocks'
 
@@ -31,11 +30,6 @@ export default function Project({ project }: ProjectProps) {
                   <Button href={project.url}>{project.button_text}</Button>
               )}
           </div>
-
-          {project.spotify_url && (
-              <SpotifyEmbed url={project.spotify_url} />
-          )}
-
 
           {project.related_projects && project.related_projects.length > 0 && (
               <div className="related-projects">

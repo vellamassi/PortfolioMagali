@@ -7,13 +7,13 @@ type ProjectFields = {
   url: string;
   text: string;
   image: string;
-  spotify_url: string;
   type: string[];
 };
 
 export type ContentBlock =
   | { type: 'text'; text: string }
-  | { type: 'youtube'; video_url_1: string; video_url_2: string | null };
+  | { type: 'youtube'; video_url_1: string; video_url_2: string | null }
+  | { type: 'spotify'; spotify_url: string };
 
 export type Project = ProjectFields & {
   related_projects?: { related_projects_id: ProjectFields }[];
