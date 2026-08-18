@@ -9,9 +9,28 @@ export default function ProjectDetail() {
     const [projects, setProjects] = useState<ProjectItem[]>([])
 
   useEffect(() => {
-      directus
-        .request(readItems('projects', { fields: ['*', 'related_projects.related_projects_id.*'] }))
-        .then(setProjects)
+      directus.request(
+          readItems('projects', {
+              fields: [
+                  '*',
+                  'related_projects.related_projects_id.*',
+                  {
+                      content_blocks:
+                          ['collection',
+                              {
+                                  item: {
+                                      content_texts: ['id', 'text'],
+                                      content_youtube: ['id', 'video_url_1', 'video_url_2'],
+                                      content_spotify: ['id', 'spotify_url'],
+                                      content_images: ['id', 'image'],
+                                  },
+                              },
+                          ],
+                  },
+              ],
+          }),
+      ).
+      then(setProjects)
   }, [])
 
   const project = projects.find(

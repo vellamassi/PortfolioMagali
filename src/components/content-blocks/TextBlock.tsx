@@ -1,8 +1,8 @@
 import Markdown from 'react-markdown'
-import type { ContentBlock } from '../../lib/directus'
+import type { TextContent } from '../../lib/directus'
 
 type TextBlockProps = {
-  block: ContentBlock & { type: 'text' }
+  block: TextContent
 }
 
 export default function TextBlock({ block }: TextBlockProps) {

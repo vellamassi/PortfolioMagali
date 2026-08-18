@@ -5,15 +5,20 @@ type ProjectFields = {
   title: string;
   button_text: string;
   url: string;
-  text: string;
   image: string;
   type: string[];
 };
 
+export type TextContent = { id: number; text: string };
+export type YoutubeContent = { id: number; video_url_1: string; video_url_2: string | null };
+export type SpotifyContent = { id: number; spotify_url: string };
+export type ImageContent = { id: number; image: string };
+
 export type ContentBlock =
-  | { type: 'text'; text: string }
-  | { type: 'youtube'; video_url_1: string; video_url_2: string | null }
-  | { type: 'spotify'; spotify_url: string };
+  | { collection: 'content_texts'; item: TextContent }
+  | { collection: 'content_youtube'; item: YoutubeContent }
+  | { collection: 'content_spotify'; item: SpotifyContent }
+  | { collection: 'content_images'; item: ImageContent };
 
 export type Project = ProjectFields & {
   related_projects?: { related_projects_id: ProjectFields }[];

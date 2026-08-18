@@ -1,4 +1,3 @@
-import Markdown from 'react-markdown'
 import { assetUrl, type Project as ProjectItem } from '../lib/directus'
 import Button from './Button'
 import SubnavTile from "./SubnavTile.tsx";
@@ -13,10 +12,6 @@ export default function Project({ project }: ProjectProps) {
       <div className="project">
           <div className="project__content">
               <h2>{project.title}</h2>
-
-              <div className="project__text">
-                  <Markdown>{project.text}</Markdown>
-              </div>
 
               <div className="project__image">
                   <img src={assetUrl(project.image)} alt={project.title} />

@@ -1,8 +1,8 @@
-import type { ContentBlock } from '../../lib/directus'
 import { youtubeEmbedUrl } from '../../lib/youtube'
+import type { YoutubeContent } from '../../lib/directus'
 
 type VideoBlockProps = {
-  block: ContentBlock & { type: 'youtube' }
+  block: YoutubeContent
 }
 
 export default function VideoBlock({ block }: VideoBlockProps) {

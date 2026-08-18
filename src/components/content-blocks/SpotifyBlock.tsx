@@ -1,8 +1,8 @@
-import type { ContentBlock } from '../../lib/directus'
 import SpotifyEmbed from '../Spotify'
+import type { SpotifyContent } from '../../lib/directus'
 
 type SpotifyBlockProps = {
-  block: ContentBlock & { type: 'spotify' }
+  block: SpotifyContent
 }
 
 export default function SpotifyBlock({ block }: SpotifyBlockProps) {
