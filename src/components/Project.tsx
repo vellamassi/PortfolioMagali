@@ -3,6 +3,7 @@ import { assetUrl, type Project as ProjectItem } from '../lib/directus'
 import Button from './Button'
 import SpotifyEmbed from './Spotify'
 import SubnavTile from "./SubnavTile.tsx";
+import ContentBlocks from './ContentBlocks'
 
 type ProjectProps = {
   project: ProjectItem
@@ -14,17 +15,21 @@ export default function Project({ project }: ProjectProps) {
           <div className="project__content">
               <h2>{project.title}</h2>
 
-              <div className="project__description">
-                  <Markdown>{project.description}</Markdown>
+              <div className="project__text">
+                  <Markdown>{project.text}</Markdown>
               </div>
+
+              <div className="project__image">
+                  <img src={assetUrl(project.image)} alt={project.title} />
+              </div>
+
+              {project.content_blocks && project.content_blocks.length > 0 && (
+                  <ContentBlocks blocks={project.content_blocks} />
+              )}
 
               {project.button_text && project.url && (
                   <Button href={project.url}>{project.button_text}</Button>
               )}
-          </div>
-
-          <div className="project__image">
-              <img src={assetUrl(project.image)} alt={project.title} />
           </div>
 
           {project.spotify_url && (
@@ -36,7 +41,7 @@ export default function Project({ project }: ProjectProps) {
               <div className="related-projects">
                   <h2>Related Projects</h2>
                   {project.related_projects.map(({ related_projects_id: related }) => (
-                      <div key={related.id} className="related-projects__project">
+                      <div key={related.id} className="related-projects__related-project">
                           <SubnavTile project={related} type={related.type[0]} />
                       </div>
                   ))}
