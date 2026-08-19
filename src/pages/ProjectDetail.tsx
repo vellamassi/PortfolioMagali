@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom'
 import directus, { readItems, type Project as ProjectItem } from '../lib/directus'
 import Project from '../components/Project'
 import { slugify } from '../lib/slug'
+import NotFound from './NotFound'
 
 export default function ProjectDetail() {
     const { type, slug } = useParams<{ type: string; slug: string }>()
     const [projects, setProjects] = useState<ProjectItem[]>([])
+    const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
       directus.request(
@@ -30,15 +32,22 @@ export default function ProjectDetail() {
               ],
           }),
       ).
-      then(setProjects)
+      then((data) => {
+          setProjects(data)
+          setLoaded(true)
+      })
   }, [])
 
   const project = projects.find(
       (candidate) => candidate.type.includes(type ?? '') && slugify(candidate.title) === slug,
   )
 
+  if (!loaded) {
+      return null
+  }
+
   if (!project) {
-      return
+      return <NotFound />
   }
 
   return (
