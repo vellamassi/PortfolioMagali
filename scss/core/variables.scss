@@ -1,0 +1,16 @@
+:root {
+    // Colors
+    --color-blue: #007bff;
+    --color-darker-blue: #0056b3;
+    --color-flowing-blue: radial-gradient(ellipse 70% 90% at 50% 100%, #6f42c1 0%, #0056b3 45%, #007bff 100%);
+    --color-white: #fff;
+    --color-black: #000;
+    --color-chassis-black: #1a1a1d;
+    --color-chassis-panel: #2e2e33;
+    --color-chrome: #8e8e93;
+    --color-led-green: #39ff14;
+    --color-led-red: #ff3b30;
+
+    // Debugging tools
+    --color-debugging: #dc3545;
+}
