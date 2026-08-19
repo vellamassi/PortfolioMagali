@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js (version from .nvmrc)
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      # npm ci (not npm install) is the important part here: it installs
+      # exactly what package-lock.json specifies and fails hard on any
+      # peer-dependency conflict, instead of silently resolving one way
+      # or another. This is what would have caught the typescript /
+      # typescript-eslint conflict before it reached main.
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npx tsc -p tsconfig.app.json --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
