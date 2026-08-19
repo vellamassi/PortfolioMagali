@@ -17,9 +17,10 @@ dist-ssr
 .env.*
 !.env.example
 
-# Directus backend data (real DB/uploads, not versioned)
+# Directus backend data (real DB/uploads/backups, not versioned)
 directus/database/
 directus/uploads/
+directus/backups/
 
 # TypeScript build cache
 *.tsbuildinfo
