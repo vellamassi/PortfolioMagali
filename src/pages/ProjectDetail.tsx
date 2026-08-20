@@ -25,6 +25,7 @@ export default function ProjectDetail() {
                                       content_youtube: ['id', 'video_url_1', 'video_url_2'],
                                       content_spotify: ['id', 'spotify_url'],
                                       content_images: ['id', 'image'],
+                                      content_image_slider: ['id', 'images.content_images_id.image']
                                   },
                               },
                           ],

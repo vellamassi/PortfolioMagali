@@ -7,7 +7,7 @@ type TextBlockProps = {
 
 export default function TextBlock({ block }: TextBlockProps) {
   return (
-    <div className="block-text">
+    <div className="text">
       <Markdown>{block.text}</Markdown>
     </div>
   )

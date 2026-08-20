@@ -6,7 +6,7 @@ type ImageBlockProps = {
 
 export default function ImageBlock({ block }: ImageBlockProps) {
   return (
-    <div className="block-image">
+    <div className="image">
       <img src={assetUrl(block.image)} alt="" />
     </div>
   )

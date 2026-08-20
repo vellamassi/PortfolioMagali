@@ -7,8 +7,8 @@ type VideoBlockProps = {
 
 export default function VideoBlock({ block }: VideoBlockProps) {
   return (
-    <div className="block-video">
-      <div className="block-video__video">
+    <div className="video">
+      <div className="video__video-frame">
         <iframe
           src={youtubeEmbedUrl(block.video_url_1)}
           title="Video 1"
@@ -18,7 +18,7 @@ export default function VideoBlock({ block }: VideoBlockProps) {
       </div>
 
       {block.video_url_2 && (
-        <div className="block-video__video">
+        <div className="video__video-frame">
           <iframe
             src={youtubeEmbedUrl(block.video_url_2)}
             title="Video 2"

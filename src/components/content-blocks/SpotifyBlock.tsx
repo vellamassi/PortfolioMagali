@@ -7,7 +7,7 @@ type SpotifyBlockProps = {
 
 export default function SpotifyBlock({ block }: SpotifyBlockProps) {
   return (
-    <div className="block-spotify">
+    <div className="spotify">
       <SpotifyEmbed url={block.spotify_url} />
     </div>
   )
