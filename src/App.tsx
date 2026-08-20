@@ -9,20 +9,18 @@ import NotFound from './pages/NotFound'
 export default function App() {
   return (
     <>
-      <main>
-          <div className="grid">
-              <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/:type" element={<ProjectCategory />} />
-                  <Route path="/:type/:slug" element={<ProjectDetail />} />
-                  <Route path="*" element={<NotFound />} />
-              </Routes>
-          </div>
+      <main className="main">
+          <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/:type" element={<ProjectCategory />} />
+              <Route path="/:type/:slug" element={<ProjectDetail />} />
+              <Route path="*" element={<NotFound />} />
+          </Routes>
       </main>
 
       <footer className="footer">
-        <Navigation />
+          <Navigation />
       </footer>
     </>
   )
