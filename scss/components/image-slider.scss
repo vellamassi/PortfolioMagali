@@ -1,0 +1,21 @@
+.image-slider {
+    position: relative;
+
+    &__viewport {
+        overflow: hidden;
+    }
+
+    &__container {
+        display: flex;
+        touch-action: pan-y pinch-zoom;
+    }
+
+    &__slide {
+        flex: 0 0 100%;
+        min-width: 0;
+
+        img {
+            height: auto;
+        }
+    }
+}
