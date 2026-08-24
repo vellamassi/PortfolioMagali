@@ -1,14 +1,15 @@
 // Core
-@import 'core/fonts.scss';
-@import 'core/variables.scss';
-@import 'core/reset.scss';
-@import 'core/typography.scss';
+@import 'core/fonts';
+@import 'core/variables';
+@import 'core/reset';
+@import 'core/typography';
 
 // Components
-@import 'components/body.scss';
-@import 'components/image-slider.scss';
-@import 'components/page.scss';
-@import 'components/root.scss';
-@import 'components/main.scss';
-@import 'components/footer.scss';
-@import 'components/navigation.scss';
+@import 'components/body';
+@import 'components/contact';
+@import 'components/image-slider';
+@import 'components/page';
+@import 'components/root';
+@import 'components/main';
+@import 'components/footer';
+@import 'components/navigation';
