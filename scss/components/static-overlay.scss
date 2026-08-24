@@ -1,5 +1,3 @@
-// Ambient VHS/CRT static: grain + scanlines + vignette, CSS only (no video/image assets).
-// Sits just under .glitch-overlay (z-index 999) so glitch bursts still read on top.
 .static-overlay {
     position: fixed;
     inset: 0;
@@ -8,7 +6,6 @@
     pointer-events: none;
 
     &__filters {
-        // keeps the <filter> defs available without taking up layout space or being visible
         position: absolute;
         width: 0;
         height: 0;
@@ -23,7 +20,7 @@
     }
 
     &__grain {
-        inset: -20%; // oversized so the jitter animation never reveals an edge
+        inset: -20%;
         filter: url(#static-grain-noise);
         opacity: var(--static-grain-opacity);
         mix-blend-mode: overlay;
