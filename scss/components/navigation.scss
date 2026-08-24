@@ -20,6 +20,8 @@
         background-color: var(--color-off-white);
         border: 2px solid var(--color-off-white);
 
+        cursor: pointer;
+
         &:hover {
             border-color: var(--color-darker-blue);
         }

@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# miscellaneous files
+Notes.md
+
 # Env
 .env
 .env.*

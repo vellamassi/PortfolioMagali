@@ -1,0 +1,75 @@
+// Ambient VHS/CRT static: grain + scanlines + vignette, CSS only (no video/image assets).
+// Sits just under .glitch-overlay (z-index 999) so glitch bursts still read on top.
+.static-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    overflow: hidden;
+    pointer-events: none;
+
+    &__filters {
+        // keeps the <filter> defs available without taking up layout space or being visible
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+
+    &__grain,
+    &__scanlines,
+    &__vignette {
+        position: absolute;
+        inset: 0;
+    }
+
+    &__grain {
+        inset: -20%; // oversized so the jitter animation never reveals an edge
+        filter: url(#static-grain-noise);
+        opacity: var(--static-grain-opacity);
+        mix-blend-mode: overlay;
+        animation: static-grain 1s steps(10, end) infinite;
+    }
+
+    &__scanlines {
+        background-image: repeating-linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.35) 0,
+            rgba(0, 0, 0, 0.35) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+        opacity: var(--static-scanline-opacity);
+        mix-blend-mode: multiply;
+        animation: static-scanlines 8s linear infinite;
+    }
+
+    &__vignette {
+        background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, var(--static-vignette-opacity)) 100%);
+    }
+}
+
+@keyframes static-grain {
+    0% { transform: translate3d(0, 0, 0); }
+    10% { transform: translate3d(-3%, -7%, 0); }
+    20% { transform: translate3d(-9%, 3%, 0); }
+    30% { transform: translate3d(6%, -6%, 0); }
+    40% { transform: translate3d(-2%, 8%, 0); }
+    50% { transform: translate3d(9%, 2%, 0); }
+    60% { transform: translate3d(-6%, -3%, 0); }
+    70% { transform: translate3d(3%, 6%, 0); }
+    80% { transform: translate3d(-8%, -8%, 0); }
+    90% { transform: translate3d(5%, -2%, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes static-scanlines {
+    from { background-position: 0 0; }
+    to { background-position: 0 100px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .static-overlay__grain,
+    .static-overlay__scanlines {
+        animation: none;
+    }
+}

@@ -16,4 +16,9 @@
 
     // Debugging tools
     --color-debugging: #dc3545;
+
+    // Static overlay (ambient VHS/CRT noise)
+    --static-grain-opacity: 0.05;
+    --static-scanline-opacity: 0.12;
+    --static-vignette-opacity: 0.55;
 }
