@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import Navigation from './components/Navigation'
+import GlitchEffect from './components/GlitchEffect'
 import Home from './pages/Home'
 import ProjectCategory from './pages/ProjectCategory'
 import ProjectDetail from './pages/ProjectDetail'
@@ -9,6 +10,8 @@ import NotFound from './pages/NotFound'
 export default function App() {
   return (
     <>
+      <GlitchEffect />
+
       <main className="main">
           <Routes>
               <Route path="/" element={<Home />} />
