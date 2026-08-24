@@ -9,25 +9,26 @@ import NotFound from './pages/NotFound'
 import StaticOverlay from "./components/visual-helpers/StaticOverlay.tsx";
 
 export default function App() {
-  return (
-    <>
-        <GlitchEffect />
+    return (
+        <>
 
-        <StaticOverlay></StaticOverlay>
+            <GlitchEffect />
 
-        <main className="main">
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/:type" element={<ProjectCategory />} />
-                <Route path="/:type/:slug" element={<ProjectDetail />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </main>
+            <StaticOverlay></StaticOverlay>
 
-        <footer className="footer">
-            <Navigation />
-        </footer>
-    </>
-  )
+            <main className="main">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/:type" element={<ProjectCategory />} />
+                    <Route path="/:type/:slug" element={<ProjectDetail />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </main>
+
+            <footer className="footer">
+                <Navigation />
+            </footer>
+          </>
+    )
 }

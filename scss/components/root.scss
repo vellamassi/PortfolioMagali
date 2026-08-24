@@ -1,5 +1,6 @@
 .root {
     min-height: 100vh;
+    overflow: hidden; // clips transform/filter paint-bleed from effects like .glitch-target
 
     display: flex;
     flex-direction: column;
