@@ -1,8 +1,8 @@
 .image-slider {
-    max-width: 500px;
+    max-width: 50rem;
 
     &__viewport {
-        overflow: hidden;
+        overflow: clip;
     }
 
     &__container {

@@ -29,7 +29,9 @@ export default function Project({ project }: ProjectProps) {
           {project.related_projects && project.related_projects.length > 0 && (
               <div className="related-projects">
                   <h2>Related Projects</h2>
-                  {project.related_projects.map(({ related_projects_id: related }) => (
+                  {project.related_projects
+                      .filter(({ related_projects_id: related }) => related != null)
+                      .map(({ related_projects_id: related }) => (
                       <div key={related.id} className="related-projects__related-project">
                           <SubnavTile project={related} type={related.type[0]} />
                       </div>
