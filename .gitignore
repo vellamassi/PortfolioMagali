@@ -20,8 +20,7 @@ Notes.md
 .env.*
 !.env.example
 
-# Directus backend data (real DB/uploads/backups, not versioned)
-directus/database/
+# Directus backend data (real uploads/backups, not versioned; Postgres data lives in a Docker volume)
 directus/uploads/
 directus/backups/
 

@@ -1,19 +1,45 @@
 services:
+    postgres:
+        image: postgres:16-alpine
+        restart: always
+        ports:
+            - "127.0.0.1:5432:5432"
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: "${DB_DATABASE}"
+            POSTGRES_USER: "${DB_USER}"
+            POSTGRES_PASSWORD: "${DB_PASSWORD}"
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_DATABASE}"]
+            interval: 5s
+            timeout: 5s
+            retries: 10
+
     directus:
         image: directus/directus:12.0.2
         restart: always
+        depends_on:
+            postgres:
+                condition: service_healthy
         ports:
             - "127.0.0.1:8055:8055"
         volumes:
-            - ./database:/directus/database
             - ./uploads:/directus/uploads
             - ./extensions:/directus/extensions
         environment:
             SECRET: "${SECRET}"
-            DB_CLIENT: "sqlite3"
-            DB_FILENAME: "/directus/database/data.db"
+            DB_CLIENT: "pg"
+            DB_HOST: "postgres"
+            DB_PORT: "5432"
+            DB_DATABASE: "${DB_DATABASE}"
+            DB_USER: "${DB_USER}"
+            DB_PASSWORD: "${DB_PASSWORD}"
             WEBSOCKETS_ENABLED: "true"
             PUBLIC_URL: "${PUBLIC_URL}"
             LICENSE_KEY: ""
             CORS_ENABLED: "true"
             CORS_ORIGIN: "${CORS_ORIGIN}"
+
+volumes:
+    pgdata:
